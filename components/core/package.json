@@ -1,26 +1,17 @@
 {
-	"name": "@gov.au/buttons",
-	"version": "3.0.5",
-	"description": "Buttons signal action. Use them to move the user through the service.",
+	"name": "@gov.au/core",
+	"version": "3.1.2",
+	"description": "The core module all components modules depend on",
 	"scripts": {
-		"build": "babel src/react/button.js --out-dir lib/react --presets=@babel/preset-env,@babel/preset-react --minified",
+		"build": "",
 		"watch": ""
 	},
-	"main": "lib/react/button.min.js",
-	"dependencies": {
-		"@gov.au/core": "^3.0.0"
-	},
 	"devDependencies": {
-		"@babel/cli": "^7.2.3",
-		"@babel/core": "^7.2.2",
-		"@babel/preset-env": "^7.2.3",
-		"@babel/preset-react": "^7.0.0",
-		"babel-loader": "^8.0.5",
+		"browser-sync": "^2.18.13",
 		"css-loader": "^2.1.0",
 		"node-sass": "^4.11.0",
-		"react": "^16.7.0",
-		"react-dom": "^16.7.0",
-		"react-router-dom": "^4.3.1",
+		"npm-run-all": "^4.1.2",
+		"onchange": "^3.2.1",
 		"sass-loader": "^7.1.0",
 		"style-loader": "^0.23.1",
 		"webpack": "^4.28.4",
@@ -38,7 +29,7 @@
 		"type": "git",
 		"url": "https://github.com/govau/design-system-components.git"
 	},
-	"homepage": "https://designsystem.gov.au/components/buttons",
+	"homepage": "https://designsystem.gov.au/components/core",
 	"bugs": {
 		"url": "https://github.com/govau/design-system-components/issues",
 		"email": "designsystem@digital.gov.au"

@@ -16,4 +16,4 @@ components/*/lib
 npm-debug.log
 lerna-debug.log
 /index.html
-
+package-lock.json
