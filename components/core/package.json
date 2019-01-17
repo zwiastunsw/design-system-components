@@ -9,7 +9,8 @@
 		"node-sass": "^4.11.0"
 	},
 	"files": [
-		"lib/*"
+		"lib/*",
+		"doc/*"
 	],
 	"engines": {
 		"node": "~10",

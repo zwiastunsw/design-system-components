@@ -20,7 +20,8 @@
 		"react-router-dom": "^4.3.1",
 	},
 	"files": [
-		"lib/*"
+		"lib/*",
+		"doc/*"
 	],
 	"engines": {
 		"node": "~10",
