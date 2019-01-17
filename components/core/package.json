@@ -3,20 +3,10 @@
 	"version": "3.1.2",
 	"description": "The core module all components modules depend on",
 	"scripts": {
-		"build": "",
-		"watch": ""
+		"build": "node-sass src/sass/_module.scss lib/sass/core.css --output-type compressed"
 	},
 	"devDependencies": {
-		"browser-sync": "^2.18.13",
-		"css-loader": "^2.1.0",
-		"node-sass": "^4.11.0",
-		"npm-run-all": "^4.1.2",
-		"onchange": "^3.2.1",
-		"sass-loader": "^7.1.0",
-		"style-loader": "^0.23.1",
-		"webpack": "^4.28.4",
-		"webpack-cli": "^3.2.1",
-		"webpack-dev-server": "^3.1.14"
+		"node-sass": "^4.11.0"
 	},
 	"files": [
 		"lib/*"

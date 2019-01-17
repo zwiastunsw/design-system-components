@@ -2,8 +2,10 @@
 	"name": "auds",
 	"license": "MIT",
 	"devDependencies": {
+		"rimraf": "^2.6.3"
 	},
 	"scripts": {
+		"purge": "rimraf components/*/node_modules && rimraf components/*/lib && rimraf node_modules"
 	},
 	"private": true,
 	"workspaces": [

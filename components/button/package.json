@@ -3,8 +3,7 @@
 	"version": "3.0.5",
 	"description": "Buttons signal action. Use them to move the user through the service.",
 	"scripts": {
-		"build": "babel src/react/button.js --out-dir lib/react --presets=@babel/preset-env,@babel/preset-react --minified",
-		"watch": ""
+		"build": "babel src/react/button.js --out-dir lib/react --presets=@babel/preset-env,@babel/preset-react --minified"
 	},
 	"main": "lib/react/button.min.js",
 	"dependencies": {
@@ -15,17 +14,10 @@
 		"@babel/core": "^7.2.2",
 		"@babel/preset-env": "^7.2.3",
 		"@babel/preset-react": "^7.0.0",
-		"babel-loader": "^8.0.5",
-		"css-loader": "^2.1.0",
 		"node-sass": "^4.11.0",
 		"react": "^16.7.0",
 		"react-dom": "^16.7.0",
 		"react-router-dom": "^4.3.1",
-		"sass-loader": "^7.1.0",
-		"style-loader": "^0.23.1",
-		"webpack": "^4.28.4",
-		"webpack-cli": "^3.2.1",
-		"webpack-dev-server": "^3.1.14"
 	},
 	"files": [
 		"lib/*"
