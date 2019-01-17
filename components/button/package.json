@@ -1,0 +1,68 @@
+{
+	"name": "@gov.au/buttons",
+	"version": "3.0.5",
+	"description": "Buttons signal action. Use them to move the user through the service.",
+	"scripts": {
+		"build": "babel src/react/button.js --out-dir lib/react --presets=@babel/preset-env,@babel/preset-react --minified",
+		"watch": ""
+	},
+	"main": "lib/react/button.min.js",
+	"dependencies": {
+		"@gov.au/core": "^3.0.0"
+	},
+	"devDependencies": {
+		"@babel/cli": "^7.2.3",
+		"@babel/core": "^7.2.2",
+		"@babel/preset-env": "^7.2.3",
+		"@babel/preset-react": "^7.0.0",
+		"babel-loader": "^8.0.5",
+		"react": "^16.7.0",
+		"react-dom": "^16.7.0",
+		"react-router-dom": "^4.3.1",
+		"webpack": "^4.28.4"
+	},
+	"files": [
+		"lib/*"
+	],
+	"engines": {
+		"node": "~10",
+		"npm": "~6"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/govau/design-system-components.git"
+	},
+	"homepage": "https://designsystem.gov.au/components/buttons",
+	"bugs": {
+		"url": "https://github.com/govau/design-system-components/issues",
+		"email": "designsystem@digital.gov.au"
+	},
+	"author": {
+		"name": "Commonwealth of Australia, DTA",
+		"email": "designsystem@digital.gov.au",
+		"url": "https://www.dta.gov.au/"
+	},
+	"contributors": [
+		{
+			"name": "Dominik Wilkowski",
+			"email": "hi@dominik-wilkowski.com",
+			"url": "https://github.com/dominikwilkowski"
+		},
+		{
+			"name": "Simon Pascal Klein",
+			"email": "klepas@klepas.org",
+			"url": "https://github.com/klepas"
+		},
+		{
+			"name": "Trevor Brennan",
+			"email": "t@trevorbrennan.com",
+			"url": "https://github.com/TrebBrennan"
+		},
+		{
+			"name": "Alex Page",
+			"email": "alex@alexpage.com.au",
+			"url": "https://github.com/alex-page"
+		}
+	],
+	"license": "MIT"
+}
