@@ -2,13 +2,26 @@
 	"name": "auds",
 	"license": "MIT",
 	"devDependencies": {
-		"rimraf": "^2.6.3"
+		"@babel/cli": "^7.2.3",
+		"@babel/core": "^7.2.2",
+		"@babel/plugin-transform-react-jsx": "^7.2.0",
+		"@babel/preset-env": "^7.2.3",
+		"@babel/preset-react": "^7.0.0",
+		"jsdoc-to-markdown": "^4.0.1",
+		"marked": "^0.6.0",
+		"react": "^16.7.0",
+		"react-dom": "^16.7.0",
+		"rimraf": "^2.6.3",
+		"sassdoc": "^2.5.1"
 	},
 	"scripts": {
-		"purge": "rimraf components/*/node_modules && rimraf components/*/lib && rimraf node_modules"
+		"purge": "rimraf components/*/node_modules || rimraf components/*/lib || rimraf node_modules"
 	},
 	"private": true,
 	"workspaces": [
 		"components/*"
-	]
+	],
+	"dependencies": {
+		"prismjs": "^1.15.0"
+	}
 }

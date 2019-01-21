@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import CORE_OVERVIEW from '../components/core/doc/OVERVIEW.md';
+import CORE_OVERVIEW from '../components/button/lib/OVERVIEW-GEN.md';
+// import AUButton from '../components/button/src/react/button';
 
 class App extends React.Component {
     coreOverview() {
