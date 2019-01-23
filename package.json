@@ -12,7 +12,8 @@
 		"react": "^16.7.0",
 		"react-dom": "^16.7.0",
 		"rimraf": "^2.6.3",
-		"sassdoc": "^2.5.1"
+		"sassdoc": "^2.5.1",
+		"treeify": "^1.1.0"
 	},
 	"scripts": {
 		"purge": "rimraf components/*/node_modules || rimraf components/*/lib || rimraf node_modules"

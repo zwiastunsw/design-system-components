@@ -1,65 +1,13 @@
 // Dependencies
 const Fs = require( 'fs' );
 const Fsp = Fs.promises;
-const Marked = require( 'marked' );
-const ReactDOMServer = require( 'react-dom/server' );
-const Babel = require( '@babel/core' );
-const Prism = require( 'prismjs' );
-const PrismLanguage = require( 'prismjs/components/');
+const Path = require( 'path' );
 const JSDoc = require( 'jsdoc-to-markdown' );
 
 // Local Dependencies
-const Helpers = require( './helpers' );
+const { GetFolders, ExecuteProcess, GetDepTree } = require( './helpers' );
 const Config = require( './config' );
-
-
-
-/**
- * Transform ES6 or JSX into CommonJS.
- * @param {string} code - Code to transpile
- * 
- * @returns {string} - CommonJS string output
- */
-const TransformCode = ( code ) => {
-	return Babel.transform( code, {
-		presets: [ '@babel/preset-react', '@babel/preset-env' ],
-	}).code;
-}
-
-
-
-/**
- * 
- * @param {string} html 
- * @param {string} react 
- */
-const FormatHTML = ( html, react ) => {
-	PrismLanguage( [ 'jsx' ] );
-
-	let HTMLOutput = "";
-
-	HTMLOutput += `<div class="code-example-html">${ Prism.highlight( html, Prism.languages.html, 'html') }</div><br/>`
-	HTMLOutput += `<div class="code-example-react">${ Prism.highlight( react, Prism.languages.jsx, 'jsx') }</div><br/>`
-	HTMLOutput += `${ html }`
-	
-	return HTMLOutput;
-}
-
-
-
-/**
- * 
- * @param {string} react 
- */
-const RenderHTML = ( react ) => {
-	// Parse React code to commonJS
-	let commonJS = TransformCode( react );
-	// Extract HTML from common react code
-	let html = ReactDOMServer.renderToStaticMarkup( eval( commonJS ) );
-	// Add styling and escaping to HTML
-	return FormatHTML( html, react );
-}
-
+const { Render, RenderExample } = require( './renderer' );
 
 
 /**
@@ -70,32 +18,61 @@ const RenderReactDocs = async ( reactSource ) => {
 	return await JSDoc.render( reactSource );
 }
 
+const GenerateDocPage = async () => {
+	let components = await GetFolders( Config.componentPath );
+	
+	let markdown = await Fsp.readFile( `${components[ 0 ]}/doc/OVERVIEW.md`, 'utf-8' );
+	
+	// Append React component comments to OVERVIEW.md file
+	markdown += await RenderReactDocs( { files: `${components[ 0 ]}/src/react/button.js` }, 'utf-8' );
+
+	let html = Render( markdown );
+	html +=	`<style>${ Config.prismTheme }</style>`
+
+	Fsp.writeFile( `index.html`, html );
+}
 
 
 // Start thing
 ( async () => {
-	const MarkdownRenderer = new Marked.Renderer();
+	// await GenerateDocPage();
+	
+	let components = await GetFolders( Config.componentPath );
+	
+	console.log( await GetDepTree( await Fsp.readFile( `${components[ 0 ]}/package.json` ) ) );
+	let packageMeta = JSON.parse( await Fsp.readFile( `${components[ 0 ]}/package.json` ) );
+	let packageNamePlain = packageMeta.name.split('/')[1]
 
-	let components = await Helpers.GetFolders( Config.componentPath );
-	let markdown = await Fsp.readFile( `${components[ 0 ]}/doc/OVERVIEW.md`, { encoding: 'utf-8' } );
+	let readme = `${packageMeta.name}
+	
+---
+${packageMeta.description}
 
-	// @TODO Just read the components/button OVERVIEW.md for now
-	MarkdownRenderer.code = ( code, token ) => {
-		if( token.includes( 'example' ) ){
-			return RenderHTML( code )
-		}
-		else {
-			return `<code>${ code }</code>`;
-		}
-	}
+## Install
 
-	// Append React component comments to OVERVIEW.md file
-	markdown += await RenderReactDocs( { files: `${components[ 0 ]}/src/react/button.js` }, { encoding: 'utf-8' } );
+\`\`\`bash
+yarn add --dev ${packageMeta.name}
+\`\`\`
+\`\`\`bash
+npm i -D ${packageMeta.name}
+\`\`\`
 
-	let html = Marked( markdown, { renderer: MarkdownRenderer } );
+## Usage
+\`\`\`jsx
+${ RenderExample( await Fsp.readFile( `${components[ 0 ]}/doc/OVERVIEW.md`, 'utf-8' ) ) }
+\`\`\`
 
-	html +=	`<style>${ Config.prismTheme }</style>`
+## Props
+todo
 
-	Fsp.writeFile( `index.html`, html );
+## Dependency Graph
+\`\`\`bash
+${ await ExecuteProcess( 'npm', ['list', './components/button'] ) }
+\`\`\`
+
+## Test
+https://auds.service.gov.au/packages/${packageNamePlain}/tests/site/
+`
+	await Fsp.writeFile( `${components[ 0 ]}/README-GEN.md`, readme )
 })();
 

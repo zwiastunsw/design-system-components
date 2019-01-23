@@ -12,7 +12,6 @@ Some information yo
   Light:  <AUbutton>
   Dark:   <AUbutton dark>
 */
-import React from 'react';
 import AUbutton from './../components/button';
 
 <AUbutton>Primary button</AUbutton>
@@ -28,7 +27,6 @@ Some secondary information yo
   Light:  <AUbutton>
   Dark:   <AUbutton dark>
 */
-import React from 'react';
 import AUbutton from './../components/button';
 
 <AUbutton as="secondary">Secondary button</AUbutton>
