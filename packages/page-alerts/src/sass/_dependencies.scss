@@ -1,6 +1,35 @@
 //sass-versioning
 @import '../../../core/node_modules/sass-versioning/dist/_index.scss';
 
+
+// default
+// $AU-color-error:   #ff635c !default;
+// $AU-color-success: #0cac78 !default;
+// $AU-color-warning: #f69900 !default;
+// $AU-color-info:    #00bfe9 !default;
+
+
+// adjust the wcag slider
+// $AU-color-error:   #EB0C00;
+// $AU-color-success: #0A855E;
+// $AU-color-warning: #D18100;
+// $AU-color-info:    #00A2C7;
+
+//using color safe
+$AU-color-error:   #CF000F;
+$AU-color-success: #40806A;
+$AU-color-warning: #E07924;
+$AU-color-info:    #00A2C7;
+
+// dark
+// $AU-color-error:   #FFBAB3;
+// $AU-color-success: #0A855E;
+// $AU-color-warning: #D18100;
+// $AU-color-info:    #00A2C7;
+
+
+
+
 //dependencies
 @import '../../../core/lib/sass/_module.scss';
 @import '../../../body/lib/sass/_module.scss';
